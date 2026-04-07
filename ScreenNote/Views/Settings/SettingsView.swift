@@ -60,7 +60,7 @@ struct SettingsView: View {
                     LabeledContent("OCR", value: "Apple Vision")
                     LabeledContent("隐私", value: "图片本地处理")
 
-                    Link(destination: URL(string: "https://jiang.fyi/screennote/privacy")!) {
+                    Link(destination: URL(string: "https://depthsky2016.github.io/screennote/privacy.html")!) {
                         HStack {
                             Text("隐私政策")
                             Spacer()
