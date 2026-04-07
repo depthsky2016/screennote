@@ -6,14 +6,20 @@ struct SearchView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewModel.results) { note in
-                NavigationLink {
-                    NoteDetailView(note: note)
-                } label: {
-                    NoteCardView(note: note, highlightQuery: viewModel.query)
+            Group {
+                if viewModel.results.isEmpty && !viewModel.query.isEmpty {
+                    ContentUnavailableView.search(text: viewModel.query)
+                } else {
+                    List(viewModel.results) { note in
+                        NavigationLink {
+                            NoteDetailView(note: note)
+                        } label: {
+                            NoteCardView(note: note, highlightQuery: viewModel.query)
+                        }
+                    }
+                    .listStyle(.plain)
                 }
             }
-            .listStyle(.plain)
             .navigationTitle("搜索")
             .searchable(text: Binding(
                 get: { viewModel.query },

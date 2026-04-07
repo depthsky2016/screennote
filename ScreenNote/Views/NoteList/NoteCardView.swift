@@ -20,13 +20,24 @@ struct NoteCardView: View {
             }
 
             VStack(alignment: .leading, spacing: 6) {
-                Text(highlighted(note.aiTitle.isEmpty ? "未命名截图" : note.aiTitle))
-                    .font(.headline)
-                    .lineLimit(1)
+                HStack(spacing: 6) {
+                    Text(highlighted(note.aiTitle.isEmpty ? "未命名截图" : note.aiTitle))
+                        .font(.headline)
+                        .lineLimit(1)
+
+                    if note.processingStatus.canRetry {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.caption)
+                            .foregroundStyle(.red)
+                    } else if note.processingStatus != .completed {
+                        ProgressView()
+                            .controlSize(.mini)
+                    }
+                }
 
                 Text(highlighted(note.aiSummary.isEmpty ? note.processingStatus.displayText : note.aiSummary))
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(note.processingStatus.canRetry ? .red : .secondary)
                     .lineLimit(2)
 
                 HStack {

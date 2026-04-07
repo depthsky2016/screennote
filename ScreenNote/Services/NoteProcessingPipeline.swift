@@ -9,6 +9,9 @@ final class NoteProcessingPipeline {
     private let imageProcessor: ImageProcessorProtocol
     private let spotlightService: SpotlightServiceProtocol
 
+    /// 每处理完一条笔记（成功或失败）递增，驱动列表刷新
+    var completionToken: Int = 0
+
     init(
         modelContext: ModelContext,
         ocrService: OCRServiceProtocol,
@@ -70,6 +73,7 @@ final class NoteProcessingPipeline {
             note.processingStatus = .completed
             try modelContext.save()
             await spotlightService.index(note: note)
+            completionToken += 1
         } catch {
             note.aiSummary = error.localizedDescription
             note.updatedAt = .now
@@ -80,6 +84,7 @@ final class NoteProcessingPipeline {
                 note.processingStatus = .failed
             }
             try? modelContext.save()
+            completionToken += 1
         }
     }
 

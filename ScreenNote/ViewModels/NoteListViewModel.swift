@@ -50,4 +50,39 @@ final class NoteListViewModel {
         try? repository?.archiveNote(note)
         reload()
     }
+
+    func retryProcessing(_ note: Note) {
+        guard note.processingStatus.canRetry else { return }
+        Task { await pipeline?.process(note) }
+    }
+
+    // MARK: - 批量操作
+
+    func batchArchive(_ noteIDs: Set<UUID>) {
+        guard let repository else { return }
+        for id in noteIDs {
+            if let note = notes.first(where: { $0.id == id }) {
+                try? repository.archiveNote(note)
+            }
+        }
+        reload()
+    }
+
+    func batchDelete(_ noteIDs: Set<UUID>) {
+        guard let repository else { return }
+        for id in noteIDs {
+            if let note = notes.first(where: { $0.id == id }) {
+                try? repository.deleteNotePermanently(note)
+            }
+        }
+        reload()
+    }
+
+    func batchRetry(_ noteIDs: Set<UUID>) {
+        for id in noteIDs {
+            if let note = notes.first(where: { $0.id == id }), note.processingStatus.canRetry {
+                Task { await pipeline?.process(note) }
+            }
+        }
+    }
 }
