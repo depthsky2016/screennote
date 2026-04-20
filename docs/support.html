@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>截图笔记 · 支持 / ScreenNote Support</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #222; }
+    h1, h2 { color: #111; }
+    h1 { border-bottom: 1px solid #eee; padding-bottom: 12px; }
+    h2 { margin-top: 32px; }
+    code { background: #f5f5f7; padding: 2px 6px; border-radius: 4px; font-size: 0.92em; }
+    a { color: #0066cc; }
+    .lang { opacity: 0.6; font-size: 0.85em; margin-left: 8px; }
+    ul { padding-left: 22px; }
+    li { margin: 4px 0; }
+    hr { margin: 40px 0; border: none; border-top: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <h1>截图笔记 · 支持 <span class="lang">ScreenNote Support</span></h1>
+
+  <h2>联系我们 / Contact</h2>
+  <p>如有任何问题、反馈或支持需求，请邮件联系：<br>
+     For any questions, feedback, or support requests, please email:<br>
+     <a href="mailto:hi@jiang.fyi">hi@jiang.fyi</a></p>
+  <p>通常在 48 小时内回复 / We typically respond within 48 hours.</p>
+
+  <h2>常见问题 / FAQ</h2>
+
+  <h3>Q: 如何从相册导入截图？<br><span class="lang">How do I import screenshots from Photos?</span></h3>
+  <p>打开首页，点击右上角的「+」按钮（Mac 上按 <code>⌘N</code>），选择一张或多张截图导入。导入后应用会自动用 Apple Vision 进行本地 OCR 文字识别。</p>
+  <p>Tap the "+" button on the top right of the Home tab (<code>⌘N</code> on Mac) and select one or more screenshots. The app will run local OCR via Apple Vision after import.</p>
+
+  <h3>Q: OCR 文字识别会上传图片吗？<br><span class="lang">Does OCR upload my images?</span></h3>
+  <p>不会。OCR 完全在设备本地运行，使用 Apple Vision Framework。图片永远不会离开你的设备。</p>
+  <p>No. OCR runs entirely on-device via Apple Vision Framework. Images never leave your device.</p>
+
+  <h3>Q: iCloud 同步如何工作？<br><span class="lang">How does iCloud sync work?</span></h3>
+  <p>登录同一 Apple ID 的设备之间，笔记通过 CloudKit 端到端加密自动同步。不需要任何第三方账户。右上角的云朵图标显示当前同步状态。</p>
+  <p>Notes sync automatically across devices signed into the same Apple ID via end-to-end encrypted CloudKit. No third-party account is required. The cloud icon in the top-right shows the current sync status.</p>
+
+  <h3>Q: 如何搜索笔记？<br><span class="lang">How do I search notes?</span></h3>
+  <p>切换到「搜索」标签（Mac 上按 <code>⌘F</code>），在搜索框输入关键词。应用会搜索 OCR 原文、你的批注、标签、文件夹。</p>
+  <p>Switch to the Search tab (<code>⌘F</code> on Mac) and type a keyword. The app searches across OCR text, your annotations, tags, and folders.</p>
+
+  <h3>Q: 如何导出全部数据？<br><span class="lang">How do I export all my data?</span></h3>
+  <p>前往「设置」→「数据」→「导出全部数据」（Mac 上按 <code>⌘E</code>）。应用会生成一个 zip 压缩包，包含 Markdown 格式、JSON 格式和原始图片。</p>
+  <p>Go to Settings → Data → Export All Data (<code>⌘E</code> on Mac). The app generates a zip archive containing Markdown, JSON, and original images.</p>
+
+  <h3>Q: Mac 版为什么不能生成 AI 摘要？<br><span class="lang">Why doesn't the Mac version offer AI summaries?</span></h3>
+  <p>Mac 版是纯本地优先的截图整理工具，不包含任何 AI 集成。iPhone / iPad 版可选在设置页自备第三方 AI 平台的 API Key。</p>
+  <p>The Mac version is strictly a local-first screenshot organizer and does not include any AI integration. The iPhone / iPad version optionally supports Bring-Your-Own-Key for third-party AI platforms via Settings.</p>
+
+  <h3>Q: 关闭主窗口后应用退出了？<br><span class="lang">The app quits after closing the main window?</span></h3>
+  <p>是的。截图笔记是单窗口应用，关闭窗口即退出应用——这是 macOS 单窗口应用的标准行为。</p>
+  <p>Yes. ScreenNote is a single-window app — closing the window quits the app, which is the standard behavior for single-window macOS apps.</p>
+
+  <h2>Mac 键盘快捷键 / Mac Keyboard Shortcuts</h2>
+  <ul>
+    <li><code>⌘N</code> — 从相册导入 / Import from Photos</li>
+    <li><code>⌘F</code> — 搜索 / Search</li>
+    <li><code>⌘E</code> — 导出当前笔记 / Export current note</li>
+    <li><code>⌘⇧C</code> — 复制摘要 / Copy summary</li>
+    <li><code>⌘⌥C</code> — 复制 OCR 原文 / Copy OCR text</li>
+    <li><code>⌘⌃C</code> — 复制 Markdown 引用 / Copy Markdown quote</li>
+  </ul>
+
+  <h2>隐私政策 / Privacy Policy</h2>
+  <p>请查看我们的 <a href="https://depthsky2016.github.io/screennote/privacy.html">隐私政策页面 / Privacy Policy</a>。</p>
+
+  <hr>
+
+  <p style="opacity: 0.5; font-size: 0.85em;">© 2026 Jiang Wu · ScreenNote · <a href="mailto:hi@jiang.fyi">hi@jiang.fyi</a></p>
+</body>
+</html>
